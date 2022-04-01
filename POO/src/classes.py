@@ -13,11 +13,11 @@ class employer:
 
 
 
-class ticket(employer):
+class ticket():
 
     # Set basic attributes
     def __init__(self, eply):
-        self.name, self.cate, self.hrEx, self.dlys = eply.name, eply.cate, eply.hrEx, eply.dlys     # Data from employer's class
+        self.name, self.cate, self.hrEx, self.dlys = eply.name, eply.cate, eply.hrEx, eply.dlys     # Set basic data
 
         # Obtener el codigo ascii de categoria, restar 65  y sumar 4 para obtener el valor para calcular las horas extras
         id = 6 - (ord(self.cate) - 65)
