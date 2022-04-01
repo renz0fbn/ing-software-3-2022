@@ -20,7 +20,7 @@ def getName():
     # Get a str with only letters
     while True:
         try:
-            name = input('TRABAJADOR:                 ')
+            name = input('TRABAJADOR:                 ').upper()
             if len(name) == 0:
                 raise Exception('\033[91mIngrese un nombre, intente de nuevo ...... \033[0m')
             

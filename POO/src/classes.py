@@ -17,7 +17,7 @@ class ticket():
 
     # Set basic attributes
     def __init__(self, eply):
-        self.name, self.cate, self.hrEx, self.dlys = eply.name, eply.cate, eply.hrEx, eply.dlys     # Set basic data
+        self.name, self.cate = eply.name, eply.cate     # Set basic data
 
         # Obtener el codigo ascii de categoria, restar 65  y sumar 4 para obtener el valor para calcular las horas extras
         id = 6 - (ord(self.cate) - 65)
@@ -26,8 +26,8 @@ class ticket():
         self.bscSalary = id * 500
         
         ph = self.bscSalary / 240
-        self.hrExSalary = ph * self.hrEx
-        self.dlysDiscount = self.dlys / 60 * ph
+        self.hrExSalary = ph * eply.hrEx
+        self.dlysDiscount = eply.dlys / 60 * ph
         self.netSalary = self.bscSalary + self.hrExSalary - self.dlysDiscount
 
     # Show data, all at once
