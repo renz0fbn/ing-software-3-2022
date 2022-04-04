@@ -9,8 +9,10 @@ def main():
     try:
         menu()
         employer1 = Employer()
-        ticke1 = Ticket(employer1)
+        ticke1 = Ticket(employer1.name, employer1.cate)
+        ticke1.calculateData(employer1.hrEx, employer1.dlys)
         ticke1.printTicket()
+        
 
     except KeyboardInterrupt:
         print('\n\033[91mFERROTEK, saliendo en modo seguro. Hasta luego !!!\033[0m')

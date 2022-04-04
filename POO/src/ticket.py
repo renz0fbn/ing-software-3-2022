@@ -1,19 +1,36 @@
 class Ticket():
 
     # Set basic attributes
-    def __init__(self, eply):
-        self.name, self.cate = eply.name, eply.cate     # Set basic data
+    def __init__(self, name, cate):
+        self.name, self.cate = name, cate     # Set basic data
 
+
+    def calculateData(self, hrEx, dlys):    #High order function
+        self.setBscSalary()
+        self.sethrExSalary(hrEx)
+        self.setDlysDiscount(dlys)
+        self.setSueldoNeto()
+
+    def setBscSalary(self):
         # Obtener el codigo ascii de categoria, restar 65  y sumar 4 para obtener el valor para calcular las horas extras
         id = 6 - (ord(self.cate) - 65)
 
         # Los salarios básicos se diferencian por 500, si se le suma 2 al id, ambos números serán divisibles
         self.bscSalary = id * 500
-        
-        ph = self.bscSalary / 240
-        self.hrExSalary = ph * eply.hrEx
-        self.dlysDiscount = eply.dlys / 60 * ph
+        self.ph = self.bscSalary / 240
+    
+
+    def sethrExSalary(self, hrEx):
+        self.hrExSalary = self.ph * hrEx
+
+
+    def setDlysDiscount(self, dlys):
+        self.dlysDiscount = dlys / 60 * self.ph
+
+
+    def setSueldoNeto(self):
         self.netSalary = self.bscSalary + self.hrExSalary - self.dlysDiscount
+
 
     # Show data, all at once
     def printTicket(self):
