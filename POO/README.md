@@ -4,7 +4,7 @@
 
 Aplicación de terminal para calcular el salario de trabajadores de la empresa FERROTECK S.A.C.
 
-![Preview Gif](https://github.com/renz0fbn/ing-software-3-2022/blob/main/POO/preview.gif)
+![Preview Gif](https://github.com/renz0fbn/ing-software-3-2022/blob/main/POO/preview.gif?raw=true)
 
 # Instalación:
 
