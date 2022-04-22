@@ -1,7 +1,7 @@
 class Main {
     // Declarar variables
-    static int ind, saldo, dni;
-    static String nombre, psw;
+    public static int ind, saldo, dni;
+    public static String nombre, psw;
 
     public static void main(String[] args) {
         Users.start();      // Crear 5 objetos clientes
@@ -15,7 +15,7 @@ class Main {
                 System.out.println("\nBienvenido \033[32m"+ nombre+"\u001B[0m");
                 Operaciones.showOptions();      // Mostrar opciones
                 while(true){
-                    int op = Operaciones.start();   // Preguntar por acción
+                    int op = BankUtils.just4();   // Preguntar por acción
                     Operaciones.main(op);           // Ejecutar operación
                 }
 

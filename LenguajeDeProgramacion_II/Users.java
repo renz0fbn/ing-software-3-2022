@@ -34,7 +34,7 @@ public class Users {
             if(Objects.equals(Main.psw, users.get(Main.ind).getPassword())){
                 // Si la contraseña es correcta, actualiza las variables de la clase main
                 Main.nombre = users.get(Main.ind).getNombre();
-                Main.saldo = users.get(Main.ind).saldo;
+                Main.saldo = users.get(Main.ind).getSaldo();
                 return true;
             }
             if(i!=2){System.out.println("\033[33mContraseña incorrecta, pruebe de nuevo\u001B[0m");}
@@ -45,8 +45,8 @@ public class Users {
 
     public static Boolean setNewSaldo(int saldo){
         // Si la clase main tiene un dni y contraseña, correctas, se guarda el nuevo saldo, al usuario correspondiente
-        if(Objects.equals(Main.psw, users.get(Main.ind).getPassword()) && Main.dni == users.get(Main.ind).getDni()) {
-            users.get(Main.ind).saldo = saldo;
+        if(users.get(Main.ind).setSaldo(Main.dni, Main.psw, saldo)) {
+            Main.saldo = saldo;
             return true;
         }
         // Si algo sale mal, retorna falso

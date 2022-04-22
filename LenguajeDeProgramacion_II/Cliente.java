@@ -1,7 +1,9 @@
+import java.util.Objects;
+
 public class Cliente {
     private final int dni;
     private final String nombre, password;
-    int saldo;
+    private int saldo;
 
     Cliente(int dni, String nombre, String password){
         // Constructor
@@ -23,4 +25,13 @@ public class Cliente {
         return password;
     }
 
+    public int getSaldo() { return saldo; }
+
+    public boolean setSaldo(int dni, String psw, int saldo){
+        if(Objects.equals(psw, this.password) && dni == this.dni) {
+            this.saldo = saldo;
+            return true;
+        }
+        return false;
+    }
 }

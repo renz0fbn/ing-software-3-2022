@@ -9,9 +9,6 @@ public class Operaciones {
         System.out.println("\033[32m[4]\u001B[0m Salir");
     }
 
-    static int start(){
-        return BankUtils.just4();
-    }
 
     static void main(int t){
 
