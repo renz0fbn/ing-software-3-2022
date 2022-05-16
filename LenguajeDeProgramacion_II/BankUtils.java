@@ -1,5 +1,7 @@
 import java.io.*;
 import java.util.Scanner;
+import java.util.Arrays;
+
 
 public class BankUtils {
     static Scanner input = new Scanner(System.in);

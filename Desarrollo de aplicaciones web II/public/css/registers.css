@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@300&display=swap');
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background: #99c1f1;
+    display: flex;
+    min-height: 100vh;
+}
+img{
+    width: 100%;
+    padding-bottom: 15px;
+}
+
+
+/* Submit form style */
+input[type="submit"] {
+    margin: 0 0  40px 0;
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 500;
+    color: rgba(0, 12, 65, 0.863);
+    background-color: rgb(226, 246, 255);
+    border: none;
+    border-radius: 40px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    height: 50px;
+}
+
+input[type="submit"]:hover {
+    background-color: #2e50e5;
+    box-shadow: 0 15px 20px rgba(46, 119, 229, 0.4);
+    color: #fff;
+    transform: translateY(-14px);
+}
+
+input[type="submit"] :active , input[type="submit"].active{
+    background-color: #2e50e5;
+    box-shadow: 0 15px 20px rgba(46, 119, 229, 0.4);
+    color: #fff;
+    transform: translateY(-14px);
+}
+
+/* tamaño del boton*/
+#subir1{
+    padding: 0 80px;
+}
+
+/* Form Style */
+form{
+    margin: auto;
+    width: auto;
+    max-width: 400px;
+    border-radius: 50px;
+    background: linear-gradient(145deg, #8aaed9, #a4cfff);
+    box-shadow:  -31px -31px 62px #7c9cc3,
+    31px 31px 62px #b6e6ff;
+    padding: 10px 40px 30px ;
+}
+h3{
+    text-align: center;
+    color: rgba(0, 12, 65, 0.863);
+    margin-top: 18px;
+    font-size: 23px;
+}
+
+
+h5{
+    color: rgb(80, 80, 97);
+    margin-top: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    padding-left: 12px;
+}
+input{
+    display: block;
+    padding: 10px;
+    width: 100%;
+    font-size: 15px;
+}
+
+
+@media(max-width:767px){
+    form {
+        width: 75%;
+    }
+
+    .cta svg {
+        display: none !important;
+    }
+
+}
+@media(max-width:780px){
+    form{
+        width: 95%;
+    }
+}
+
+
+/* Input form Style */
+input[required] {
+    box-sizing: border-box;
+    width: 100%;
+    height: calc(3em + 2px);
+    margin: 3em 0 1em;
+    padding: 1em;
+    border: 1px solid rgba(255, 255, 255, 0.411);
+    border-radius: 20px;
+    background: #99c1f1;
+    resize: none;
+    outline: none;
+    color: rgb(33, 44, 78);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+input[required]:focus {
+    border-color: #012DFF;
+    color: rgba(33, 53, 141, 0.863);
+
+}
+input[required]:focus + label[placeholder]:before {
+    color: rgba(0, 12, 65, 0.863);
+}
+input[required]:focus + label[placeholder]:before,
+input[required]:valid + label[placeholder]:before {
+    transition-duration: 0.2s;
+    transform: translate(0, -2em) scale(0.95, 0.95);
+}
+input[required]:invalid + label[placeholder][alt]:before {
+    content: attr(alt);
+}
+input[required] + label[placeholder] {
+    display: block;
+    pointer-events: none;
+    line-height: 1.25em;
+    margin-top: calc(-3em - 2px);
+    margin-bottom: calc((3em - 1em) + 2px);
+}
+input[required] + label[placeholder]:before {
+    content: attr(placeholder);
+    display: inline-block;
+    margin: 0 calc(1em + 2px);
+    padding: 0 2px;
+    color: #fdfdfd;
+    white-space: nowrap;
+    transition: 0.3s ease-in-out;
+}
+
+
+/* Estilo de flecha y subrayado */
+
+.cta {
+    border: none;
+    background: none;
+    text-decoration: none;
+}
+
+.cta span {
+    padding-bottom: 7px;
+    letter-spacing: 2px;
+    font-size: 11px;
+    padding-left: 5px;
+    padding-right: 8px;
+    text-transform: uppercase;
+}
+
+.cta svg {
+    transform: translateX(-8px);
+    transition: all 0.3s ease;
+}
+
+.cta:hover svg {
+    transform: translateX(0);
+}
+
+.cta:active svg {
+    transform: scale(0.9);
+}
+
+.hover-underline-animation {
+    position: relative;
+    color: rgb(6, 23, 179);
+    padding-bottom: 20px;
+    letter-spacing: 0 !important;
+}
+
+.hover-underline-animation:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1.5px;
+    bottom: 0;
+    left: 0;
+    background-color: #1a0785;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.cta:hover .hover-underline-animation:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* message */
+.msg{
+    text-align: center;
+    font-size: 16px;
+    margin: 20px 0  0 0 !important;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+}
+#response{
+    color: rgba(253, 0, 0, 0.863);
+}
+#sucsses{
+    color: green;
+    font-size: 17px;
+}
+#subir1{
+    margin: 50px 0  40px 0;
+}
+.btnEnv{
+    margin: 20px 0  40px 0 !important;
+}

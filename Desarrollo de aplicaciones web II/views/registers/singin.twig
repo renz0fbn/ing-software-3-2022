@@ -1,0 +1,47 @@
+{% extends "/registers/layoutR.twig" %}
+
+{% block title %}
+    <title>Senati News | Unete a la comunidad</title>
+{% endblock %}
+
+{% block content %}
+
+    <form action="/singin/validate" method="post" id="formlg">
+        <h3 style="font-size: 20px !important;">Crea tu cuenta en</h3>
+        <img src="/img/logo.png" alt="Senati_News">
+
+        <input type="text" name="name" required='' autocomplete="off" maxlength="25">
+        <label alt="Nombres" placeholder="Nombres"></label>
+
+        <input type="text" name="lastName" required='' autocomplete="off" maxlength="25">
+        <label alt="Apellidos" placeholder="Apellidos"></label>
+
+
+        <input type="text" class="effect-1" style="padding-bottom: 8px" maxlength="8"  minlength="8"  name="dni" required autocomplete="off" onkeypress='return event.charCode >= 48 && event.charCode <= 57' title="Tu D.N.I.">
+        <label alt="D.N.I." placeholder="D.N.I."></label>
+
+        <input type="text" name="user" required='' autocomplete="off" maxlength="18">
+        <label alt="Usuario" placeholder="Usuario"></label>
+
+        <input type="email" name="email" required='' autocomplete="off" maxlength="30">
+        <label alt="Correo" placeholder="Correo"></label>
+
+        <input type="password"  name="password" required='' maxlength="20">
+        <label alt='Contraseña' placeholder="Contraseña"></label>
+        <h4 id="response"></h4>
+        <div id="subir1"><input type="submit" value="Crear" id="singIn"></div>
+        <h5>¿Ya tienes una cuenta?
+            <a href="/login" class="cta">
+                <span class="hover-underline-animation">Inicia sesión</span>
+                <svg id="arrow-horizontal" xmlns="http://www.w3.org/2000/svg" width="22" height="10" viewBox="0 0 46 16">
+                    <path id="Path_10" data-name="Path 10" d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z" transform="translate(30)"></path>
+                </svg>
+            </a>
+        </h5>
+    </form>
+
+{% endblock %}
+
+{% block script %}
+    <script src="js/validateNewUser.js"></script>
+{% endblock %}

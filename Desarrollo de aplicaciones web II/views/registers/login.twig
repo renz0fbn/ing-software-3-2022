@@ -1,0 +1,46 @@
+{% extends "/registers/layoutR.twig" %}
+
+{% block title %}
+    <title>Senati News | Donde se escucha tu voz</title>
+{% endblock %}
+
+{% block content %}
+
+    <form action="/login/auth" method="post" id="formlg">
+        <h3 >Bienvenido a</h3>
+        <img src="./img/logo.png" alt="Senati_News">
+
+        <input type="text" name="user" required='' autocomplete="off">
+        <label alt="Usuario o D.N.I." placeholder="Usuario o D.N.I."></label>
+
+        <input type="password"  name="password" required=''>
+        <label alt='Contraseña' placeholder="Contraseña"></label>
+
+        <h4 id="response"></h4>
+
+            {% if newAccount %}
+        <h4 id="sucsses" class="msg">Cuenta creada correctamente</h4>
+                <style>
+                    #subir1{
+                        margin-top: 20px !important;
+                    }
+                </style>
+            {% endif %}
+
+
+            <div id="subir1"><input type="submit" value="Ingresar" id="logIn"></div>
+        <h5>¿No tienes una cuenta?
+            <a href="/singin" class="cta">
+                <span class="hover-underline-animation"> Crea una</span>
+                <svg id="arrow-horizontal" xmlns="http://www.w3.org/2000/svg" width="30" height="10" viewBox="0 0 46 16">
+                    <path id="Path_10" data-name="Path 10" d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z" transform="translate(30)"></path>
+                </svg>
+            </a>
+        </h5>
+    </form>
+
+{% endblock %}
+
+{% block script %}
+    <script src="js/authUser.js"></script>
+{% endblock %}

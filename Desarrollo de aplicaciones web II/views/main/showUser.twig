@@ -1,0 +1,147 @@
+{% extends "/main/layoutMain.twig" %}
+
+{% block style %}
+    <link href="css/main.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+    <title>{{user.user}} | {{user.name}}, {{user.lastName}}</title>
+{% endblock %}
+
+{% block content %}
+    <body>
+
+    <!-- Begin Nav
+    ================================================== -->
+    <nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="container">
+            <!-- begin logo -->
+            <a class="navbar-brand" href="/">
+                <img src="img/logoOscuro.png" alt="logo">
+            </a>
+            <!-- end logo -->
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <!-- begin menu -->
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Descubrir</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/create">Expresar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class='nav-link' href='/micuenta'>Mi cuenta</a>
+                    </li>
+                    <li class='nav-item'>
+                        <a class='nav-link' href='/logout'>Cerrar Sesión</a>
+                    </li>
+                <!-- end menu -->
+            </div>
+        </div>
+    </nav>
+    <!-- End Nav
+    ================================================== -->
+
+    <!-- Begin Top Author Page
+    ================================================== -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                    <img  id="big-thumb" class="img-fluid" src="{{user.image}}" alt="{{user.user}}">
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <div class="mainheading">
+
+                    <div class="row post-top-meta authorpage">
+                        <div class="col-md-10 col-xs-12">
+                            <h1>{{user.user}}</h1>
+                            <span class="author-description">{{user.description}}</span><br><br>
+                            <span class="pull-left">Nombres</span>
+                            <span class="pull-right">Apellidos</span><br>
+                            <label class="pull-left">{{user.name}}</label>
+                            <label class="pull-right">{{user.lastName}}</label><br><br>
+                            <br><h5 style='font-size:26px'>Correo</h5><hr>
+                            <label>{{user.email}}</label><br>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Top Author Meta
+    ================================================== -->
+
+    <!-- Begin Author Posts
+    ================================================== -->
+    <div class="graybg authorpage">
+        <div class="container">
+            <div class="listrecent listrelated">
+
+                <div class="section-title">
+                    <h2><span>Mas de {{ user.user }}</span></h2>
+                </div>
+                <!-- begin post -->
+                <div class="card-columns listfeaturedtag">
+                    <!-- begin post -->
+                    {% for new in news%}
+
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-md-5 wrapthumbnail">
+                                    <a href="/new?id={{new.idNoticia}}">
+                                        <div class="thumbnail" style="background-image:url({{ new.thumbail ?: "img/gradientes/#{random(1, 10)}.jpg" }});">
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="card-block">
+                                        <h2 class="card-title"><a href="/new?id={{new.idNoticia}}">{{new.titulo}}</a></h2>
+                                        <h4 class="card-text">{{new.resumen}}</h4>
+                                        <div class="metafooter">
+                                            <div class="wrapfooter">
+								<span class="meta-footer-thumb">
+								<a href="/user?id={{new.idUsuario}}"><img class="author-thumb" src="{{user.image}}" alt="{{new.autor}}"></a>
+								</span>
+                                                <span class="author-meta">
+								<span class="post-name"><a href="/user?id={{new.idUsuario}}">{{new.autor}}</a></span><br/>
+								<span class="post-date">{{new.created_at}}</span><span class="dot"></span><span class="post-read">{{new.categoria}}</span>
+								</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <!-- end post -->
+
+            </div>
+        </div>
+    </div>
+    <!-- End Author Posts
+    ================================================== -->
+
+    <!-- Begin Twitter Timeline
+    ================================================== -->
+    <!-- End Twitter Timeline
+    ================================================== -->
+
+    <!-- Begin Footer
+    ================================================== -->
+    <div class="container">
+        <div class="footer">
+            <p class="pull-left">
+                Copyright &copy; 2022 Senati News
+            </p>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- End Footer
+    ================================================== -->
+
+    </body>
+{% endblock %}

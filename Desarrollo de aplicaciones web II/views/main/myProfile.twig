@@ -1,0 +1,178 @@
+{% extends "/main/layoutMain.twig" %}
+
+{% block style %}
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/main/profile.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+    <title>{{user.user}} | {{user.name}}, {{user.lastName}}</title>
+{% endblock %}
+
+{% block content %}
+    <body>
+
+    <!-- Begin Nav
+    ================================================== -->
+    <nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="container">
+            <!-- begin logo -->
+            <a class="navbar-brand" href="/">
+                <img src="img/logoOscuro.png" alt="logo">
+            </a>
+            <!-- end logo -->
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <!-- begin menu -->
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Descubrir</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/create">Expresar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class='nav-link active' href='/micuenta'>Mi cuenta</a>
+                    </li>
+                    <li class='nav-item'>
+                        <a class='nav-link' href='/logout'>Cerrar Sesión</a>
+                    </li>
+                    </ul>
+                    <!-- end menu -->
+            </div>
+        </div>
+    </nav>
+    <!-- End Nav
+    ================================================== -->
+
+    <!-- Begin Top Author Page
+================================================== -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <br>
+                <div class="profile-pic">
+                    <label class="-label" for="file">
+                        <span class="glyphicon glyphicon-camera"></span>
+                        <span>Change Image</span>
+                    </label>
+                    <form action="/save/profilePicture" method="post" enctype="multipart/form-data">
+                        <input id="file" type="file" name="pfp" accept="image/*" onchange="loadFile(event)"/>
+                        <input class="Ecambios d-none" id="uploadProfile" type="submit" value="subir" style=""/>
+
+                    </form>
+
+                    <img src="{{user.image}}" id="output" width="200"  alt="{{user.name}}"/>
+                </div>
+
+
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <div class="mainheading">
+                    <div class="row post-top-meta authorpage">
+
+                        <div class="col-md-10 col-xs-12">
+                            <h1>{{user.user}}</h1><br>
+                            <form action="/save/description" method="post"><h4>Cambia tu biografia</h4><br>
+                                <span class="author-description">
+                                    <textarea style="border:none" name="biografia" cols="60" rows="4" maxlength="260" placeholder="Describete">{{user.description}}</textarea>
+                                    <input type="submit"  class='Ecambios' value="Editar"></span></form>
+                            <br><br><hr>
+                            <span class="pull-left">Nombres</span>
+                            <span class="pull-right">Apellidos</span><br>
+                            <label class="pull-left">{{user.name}}</label>
+                            <label class="pull-right">{{user.lastName}}</label><br><br>
+                            <span class="pull-left">Correo</span>
+                            <span class="pull-right">D.N.I.</span><br>
+                            <label class="pull-left">{{user.email}}</label>
+                            <label class="pull-right">{{user.dni}}</label>
+                            <br><hr>
+                            <br><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Top Author Meta
+    ================================================== -->
+
+    <!-- Begin Author Posts
+    ================================================== -->
+    <div class="graybg authorpage">
+        <div class="container">
+            <div class="listrecent listrelated">
+                <div class="section-title">
+                    <h2><span>Mis Publicaciones</span></h2>
+                </div>
+                <!-- begin post -->
+                <div class="card-columns listfeaturedtag">
+                    {% for new in news%}
+                        <!-- begin post -->
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-md-5 wrapthumbnail">
+                                    <a href="/new?id={{new.idNoticia}}">
+                                        <div class="thumbnail" style="background-image:url({{ new.thumbail ?: "img/gradientes/#{random(1, 10)}.jpg" }});">
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="card-block">
+                                        <h2 class="card-title"><a href="/new?id={{new.idNoticia}}">{{new.titulo}}</a></h2>
+                                        <h4 class="card-text">{{new.resumen}}</h4>
+                                        <div class="metafooter">
+                                            <div class="wrapfooter">
+								<span class="meta-footer-thumb">
+								<a href="/user?id={{new.idUsuario}}"><img class="author-thumb" src="{{user.image}}" alt="{{new.autor}}"></a>
+								</span>
+                                                <span class="author-meta">
+								<span class="post-name"><a href="/user?id={{new.idUsuario}}">{{new.autor}}</a></span><br/>
+								<span class="post-date">{{new.created_at}}</span><span class="dot"></span><span class="post-read">{{new.categoria}}</span>
+								</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end post -->
+                    {% endfor %}
+
+                </div>
+                <!-- end post -->
+
+            </div>
+        </div>
+    </div>
+    <!-- End Author Posts
+    ================================================== -->
+
+    <!-- Begin Twitter Timeline
+    ================================================== -->
+    <!-- End Twitter Timeline
+    ================================================== -->
+
+    <!-- Begin Footer
+    ================================================== -->
+    <div class="container">
+        <div class="footer">
+            <p class="pull-left">
+                Copyright &copy; 2022 Senati News
+            </p>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- End Footer
+    ================================================== -->
+
+    </body>
+{% endblock %}
+
+{% block script %}
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+    <script src="/js/changeProfile.js"></script>
+
+{% endblock %}
