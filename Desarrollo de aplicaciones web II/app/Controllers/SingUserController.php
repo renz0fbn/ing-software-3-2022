@@ -30,12 +30,17 @@ class SingUserController extends BaseController{
         // echo json_encode(array('validate'=> false, 'tipo' => 'es una prueba'));
         $checkUser = User::where('user', $postData['user'])->first();
         $checkEmail =  User::where('email', $postData['email'])->first();
+        $checkDni =  User::where('dni', $postData['dni'])->first();
 
-        $validate = false; $user = false; $email = false; $msg = null;
+        $validate = false; $msg = null;
 
         if ($checkUser && $checkEmail)
         {
             $msg = "Usuario y correo ya en uso pruebe de nuevo";
+        }
+        elseif($checkDni)
+        {
+            $msg = "Ya existe una cuenta con este D.N.I."
         }
         elseif($checkUser)
         {
@@ -50,10 +55,10 @@ class SingUserController extends BaseController{
         else
         {
             $this->addNewUser($postData);
-            $user = true; $email = true; $validate = true;
+            $validate = true;
             $msg = "Cuenta creada correctamente";
         }
-        echo json_encode(array('validate'=> $validate, 'user' => $user , 'email'=> $email, 'msg' => $msg));
+        echo json_encode(array('validate'=> $validate, 'msg' => $msg));
         return $this->renderHTML('/empty.twig');
 
     }
