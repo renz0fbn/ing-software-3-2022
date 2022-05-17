@@ -1,3 +1,5 @@
+// Codigo para la pagina 404 (hace que el astronauta se mueva)
+
 gsap.set("svg", { visibility: "visible" });
 gsap.to("#headStripe", {
   y: 0.5,

@@ -14,14 +14,15 @@ class BaseController {
             'debug' => true,
             'cache' => false,
         ));
-        $this->templateEngine->addExtension(new \Twig\Extension\DebugExtension());
+        $this->templateEngine->addExtension(new \Twig\Extension\DebugExtension());     // dumb funciton to debug twig
     }
 
-    public function renderHTML($fileName, $data = []) {
+    public function renderHTML($fileName, $data = []) {     // Funcion para renderizar una pagina html, con twig template
         return new HtmlResponse($this->templateEngine->render($fileName, $data));
     }
 
     public function checkSession(){
+        // Comprobar si hay un login correcto
         if (!isset($_COOKIE['user']) || !isset($_COOKIE['pass'])){
             return false;
         }

@@ -7,9 +7,9 @@ use Laminas\Diactoros\Response\RedirectResponse;
 class NewsController extends BaseController{
 
     public function addNew($request){
-        $postData = $request->getParsedBody();
-        $files = $request->getUploadedFiles();
-        $new = new aNew();
+        $postData = $request->getParsedBody();  // Obtener datos del formulario
+        $files = $request->getUploadedFiles();  // Obtener el archivo si existe
+        $new = new aNew();                      // Crear nueva noticia
         $new->titulo = $postData['title'];
         $new->resumen = $postData['resume'];
         $new->cuerpo = $postData['main'];
@@ -18,9 +18,9 @@ class NewsController extends BaseController{
         $new->autor = $_COOKIE['user'];
         $new->thumbail = $this->uploadThumbail($files, $postData['title']);
 
-        $new->save();
+        $new->save();                           // Guardar noticia
         $id = aNew::select("idNoticia")->where('idUsuario', $new->idUsuario)->latest()->first();
-        return new RedirectResponse('/new?id='.$id->idNoticia);
+        return new RedirectResponse('/new?id='.$id->idNoticia);     // Regresar
 
 
 
@@ -29,6 +29,7 @@ class NewsController extends BaseController{
         if(!$this->checkSession()){
             return new RedirectResponse('/');
         }
+        // Renderizar la pagina y enviar datos
         return $this->renderHTML('/main/news.twig',[
             'user' => $_COOKIE['user'],
             'idUser'=> $_COOKIE['idUser']
@@ -38,20 +39,24 @@ class NewsController extends BaseController{
     public function showNew()
     {
         if(isset($_GET['id'])){
+            // Buscar noticia
             $New = aNew::where('idNoticia', $_GET['id'])->join('Users', 'Users.id', '=', 'News.idUsuario')->select('News.*', 'Users.image')->first();
             if($New){
+                // Renderizar la pagina y enviar datos
                 return $this->renderHTML('/main/showNew.twig', [
                     'New' => $New, 'idUser'=> $_COOKIE['idUser']
                 ]);
             }
-
+            // 404 error
             return $this->renderHTML('404.html');
         }
+        // Regresar a la pagina principal
         return new RedirectResponse('/');
 
     }
 
     public function uploadThumbail($files, $name){
+        // Comprobar si existe una imagen y subirla o retornar null
         $thumb = $files['thumbail'];
         if($thumb){
             $filePath = "img/uploads/news/".str_replace(' ', '',$name).".png";

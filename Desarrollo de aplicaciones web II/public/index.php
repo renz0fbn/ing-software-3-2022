@@ -42,50 +42,6 @@ $request = Laminas\Diactoros\ServerRequestFactory::fromGlobals(
     $_FILES
 );
 
-$routerContainer = new RouterContainer();
-$map = $routerContainer->getMap();
-$map->get('index', '/main', [
-    'controller' => 'App\Controllers\IndexController',
-    'action' => 'indexAction'
-]);
-$map->get('indexJobs', '/jobs', [
-    'controller' => 'App\Controllers\JobsController',
-    'action' => 'indexAction'
-]);
-$map->get('addJobs', '/jobs/add', [
-    'controller' => 'App\Controllers\JobsController',
-    'action' => 'getAddJobAction'
-]);
-$map->get('deleteJobs', '/jobs/delete', [
-    'controller' => 'App\Controllers\JobsController',
-    'action' => 'deleteAction'
-]);
-$map->post('saveJobs', '/jobs/add', [
-    'controller' => 'App\Controllers\JobsController',
-    'action' => 'getAddJobAction'
-]);
-$map->get('addUser', '/users/add', [
-    'controller' => 'App\Controllers\UsersController',
-    'action' => 'getAddUser'
-]);
-$map->post('saveUser', '/users/save', [
-    'controller' => 'App\Controllers\UsersController',
-    'action' => 'postSaveUser'
-]);
-$map->get('loginForm', '/cursophp/login', [
-    'controller' => 'App\Controllers\AuthController',
-    'action' => 'getLogin'
-]);
-$map->post('auth', '/auth', [
-    'controller' => 'App\Controllers\AuthController',
-    'action' => 'postLogin'
-]);
-$map->get('admin', '/admin', [
-    'controller' => 'App\Controllers\AdminController',
-    'action' => 'getIndex',
-    'auth' => true
-]);
-
 // Senati News map
 
 $map->get('singIn', '/singin', [

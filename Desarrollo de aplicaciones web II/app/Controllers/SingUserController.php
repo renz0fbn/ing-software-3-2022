@@ -7,12 +7,13 @@ use App\Models\User;
 class SingUserController extends BaseController{
 
     public function registerUser() {
+        // Renderizar pagina de la carpeta Views/SingUser
         return $this->renderHTML('/registers/singin.twig');
     }
 
     public function addNewUser($postData) {
 
-        // Validation here
+        // Crear un nuevo objeto de la clase User
 
         $user = new User();
         $user->name = $postData['name'];
@@ -20,27 +21,28 @@ class SingUserController extends BaseController{
         $user->user = $postData['user'];
         $user->email = $postData['email'];
         $user->password = password_hash($postData['password'], PASSWORD_DEFAULT);
-        $user->image = 'https://ui-avatars.com/api/?name='.str_replace(' ', '', $user->name).'+'.str_replace(' ', '',$user->lastName ).'&size=456&background=random&rounded=true';
+        $user->image = 'https://ui-avatars.com/api/?name='.str_replace(' ', '', $user->name).'+'.str_replace(' ', '',$user->lastName ).'&size=456&background=random&rounded=true';  // Generar imagen de perfil API UiAvatars
         $user->description = "Estoy usando Senati News :D";
         $user->dni = $postData['dni'];
-        $user->save();
+        $user->save();  // Guardar el objeto en la base de datos
     }
     public function validateUser($request){
-        $postData = $request->getParsedBody();
-        // echo json_encode(array('validate'=> false, 'tipo' => 'es una prueba'));
+        $postData = $request->getParsedBody();  // Obtener los datos del formulario
+        // Buscar coencidencias en la base de datos
         $checkUser = User::where('user', $postData['user'])->first();
         $checkEmail =  User::where('email', $postData['email'])->first();
         $checkDni =  User::where('dni', $postData['dni'])->first();
 
         $validate = false; $msg = null;
 
+        // Checkear resultados
         if ($checkUser && $checkEmail)
         {
             $msg = "Usuario y correo ya en uso pruebe de nuevo";
         }
         elseif($checkDni)
         {
-            $msg = "Ya existe una cuenta con este D.N.I."
+            $msg = "Ya existe una cuenta con este D.N.I.";
         }
         elseif($checkUser)
         {
@@ -58,6 +60,8 @@ class SingUserController extends BaseController{
             $validate = true;
             $msg = "Cuenta creada correctamente";
         }
+
+        // Retornar resultados
         echo json_encode(array('validate'=> $validate, 'msg' => $msg));
         return $this->renderHTML('/empty.twig');
 

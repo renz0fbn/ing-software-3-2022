@@ -1,3 +1,5 @@
+/* Función para cambiar entre modo oscuro y claro */
+// En desarrollo
 const btnSwitch = document.querySelector('#switch');
 
 btnSwitch.addEventListener('click', () => {
