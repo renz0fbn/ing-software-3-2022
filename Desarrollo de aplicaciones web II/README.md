@@ -1,6 +1,19 @@
-# Desarrollo de aplicaciones Web II
+<h1 align="center">Desarrollo de aplicaciones Web II</h1>
 
 ## Trabajo del curso - TR1
+
+<details><summary> <h2>ShowCase (Click para abrir !)</h2></summary><br>
+
+![1](https://github.com/renz0fbn/ing-software-3-2022/blob/main/Desarrollo%20de%20aplicaciones%20web%20II/preview/preview1.png?raw=true)
+![2](https://github.com/renz0fbn/ing-software-3-2022/blob/main/Desarrollo%20de%20aplicaciones%20web%20II/preview/preview2.png?raw=true)
+![3](https://github.com/renz0fbn/ing-software-3-2022/blob/main/Desarrollo%20de%20aplicaciones%20web%20II/preview/preview3.png?raw=true)
+![4](https://github.com/renz0fbn/ing-software-3-2022/blob/main/Desarrollo%20de%20aplicaciones%20web%20II/preview/preview4.png?raw=true)
+![5](https://github.com/renz0fbn/ing-software-3-2022/blob/main/Desarrollo%20de%20aplicaciones%20web%20II/preview/preview5.png?raw=true)
+![6](https://github.com/renz0fbn/ing-software-3-2022/blob/main/Desarrollo%20de%20aplicaciones%20web%20II/preview/preview6.png?raw=true)
+![7](https://github.com/renz0fbn/ing-software-3-2022/blob/main/Desarrollo%20de%20aplicaciones%20web%20II/preview/preview7.png?raw=true)
+
+(Los datos de noticias y usuarios, NO vienen incluidos)
+</details>
 
 ## Pre-requisitos
 (click para ir a la página de descarga)
@@ -12,10 +25,10 @@
 
 # Set-Up Project
 
-## Crear maquina virtual
+## Crear máquina virtual
 
 ### Instalar Laravel Homestead
-Full guia [aqui](https://laravel.com/docs/9.x/homestead)
+Full guía [aquí](https://laravel.com/docs/9.x/homestead)
 
 Clonar el siguiente repositorio:
 
@@ -23,7 +36,7 @@ Clonar el siguiente repositorio:
 git clone https://github.com/laravel/homestead.git ~/Homestead
 ```
 
-Despues de clonar el repositorio, pasar a la rama ``` release ``` que contiene la ultima version estable de Homestead
+Después de clonar el repositorio, pasar a la rama ``` release ``` que contiene la última versión estable de Homestead
 
 ```
 cd ~/Homestead
@@ -38,25 +51,25 @@ bash init.sh
 # Windows...
 init.bat
 ```
-Luego agregar una nueva maquina a Vagrant:
+Luego agregar una nueva máquina a Vagrant:
 
 ```
 vagrant box add laravel/homestead
 ```
-Selecionar la opcion 3 (virtualBox), luego ir a la carpeta del proyecto ``` senatiNews ``` y copiar el archivo ``` Homestead.yaml ```. Edita la linea 13 del archivo con la ubicación de la carpeta ``` senatiNews ```.
+Selecionar la opcion 3 (virtualBox), luego ir a la carpeta del proyecto ``` senatiNews ``` y copiar el archivo ``` Homestead.yaml ```. Edita la línea 13 del archivo con la ubicación de la carpeta ``` senatiNews ```.
 
-Finalmente ejecuta dentro de la carpeta ``` ~/Homestead ``` 
+Finalmente, ejecuta dentro de la carpeta ``` ~/Homestead ``` 
 
 ```
 vagrant up
 ```
-para encender la maquina, puedes usar ese comando, siempre y cuando estes en ``` ~/Homestead ``` , o puedes encenderlo atravez del gui interface de virtualBox.
+Para encender la máquina, puedes usar ese comando, siempre y cuando estés en ``` ~/Homestead ```, o puedes encenderlo a través del gui interface de VirtualBox.
 
-RECUERDA ENCENDER LA MAQUINA PARA QUE TODO FUNCIONE
+RECUERDA ENCENDER LA MÁQUINA PARA QUE TODO FUNCIONE
 
 ## Crear tablas y relaciones en la base de datos
 
-Dentro de la carpeta ``` senatiNews ``` existe el archivo ``` DataBaseBuilder.sql ```, conectate a la base de datos y ejecuta el codigo. Este creará todas las tablas necesarias para proyecto.
+Dentro de la carpeta ``` senatiNews ``` existe el archivo ``` DataBaseBuilder.sql ```, conéctate a la base de datos y ejecuta el código. Este creará todas las tablas necesarias para proyecto.
 
 ### Conectarse a la base de datos
 
@@ -65,20 +78,20 @@ Dentro de la carpeta ``` senatiNews ``` existe el archivo ``` DataBaseBuilder.sq
 - Password:   secret
 - Database:   senatiNews
 
-Puedes conectarte mediante la aplicacion que gustes.
+Puedes conectarte mediante la aplicación que gustes.
 ## Agregar página a mi host
-Ubicación del archivo host, segun tu sistema operativo [aquí](https://www.swhosting.com/es/comunidad/manual/modificar-fichero-hosts-en-windows-mac-y-linux) .
+Ubicación del archivo host, según tu sistema operativo [aquí](https://www.swhosting.com/es/comunidad/manual/modificar-fichero-hosts-en-windows-mac-y-linux).
 
-agregar al final:
+Dentro de tu archivo host agregar al final:
 
 ```
 192.168.56.56       senati.news
 ``` 
-Listo, pagina agregada con exito
+Listo, página agregada con éxito
 
 ## Instalar dependencias con composer
 
-Entra a la maquina virtual con ``` vagrant ssh ``` o atravez de virtual box (recomendado).
+Entra a la máquina virtual con ``` vagrant ssh ``` o a través de virtual box (recomendado).
 
 - User: vagrant
 - Password: vagrant
@@ -97,9 +110,9 @@ para instalar todas las dependencias
 
 ### Solucionar error con vlucas
 
-Al ingresar a la pagina web ``` senati.news ``` , aparecerá un error con una dependencia, ir al archivo que se menciona y cambiar ``` auto_detect_line_endings ``` por ``` auto_detect_line ```. Eso deberia solucionar el problema.
+Al ingresar a la página web ``` senati.news ```, aparecerá un error con una dependencia, ir al archivo que se menciona y cambiar ``` auto_detect_line_endings ``` por ``` auto_detect_line ```. Eso debería solucionar el problema.
 
-FELICIDADES TODO ESTA LISTO
+FELICIDADES, TODO ESTÁ LISTO
 
 Ingresa a ``` senati.news ``` con tu navegador favorito y disfruta. 
 
