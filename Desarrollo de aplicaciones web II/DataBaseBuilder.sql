@@ -16,10 +16,10 @@ CREATE TABLE `Users` (
 
 CREATE TABLE `News` (
 	`idNoticia` int(11) NOT NULL AUTO_INCREMENT,
-	`titulo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+	`titulo` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
 	`created_at` timestamp NOT NULL DEFAULT current_timestamp(),
 	`updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
-	`resumen` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	`resumen` varchar(350) COLLATE utf8mb4_unicode_ci NOT NULL,
 	`cuerpo` text COLLATE utf8mb4_unicode_ci NOT NULL,
     `categoria` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
     `idUsuario` int(11) NOT NULL,
