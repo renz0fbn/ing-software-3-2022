@@ -43,7 +43,8 @@ $request = Laminas\Diactoros\ServerRequestFactory::fromGlobals(
 );
 
 // Senati News map
-
+$routerContainer = new RouterContainer();
+$map = $routerContainer->getMap();
 $map->get('singIn', '/singin', [
     'controller' => 'App\Controllers\SingUserController',
     'action' => 'registerUser'

@@ -16,7 +16,7 @@ class NewsController extends BaseController{
         $new->categoria = $postData['category'];
         $new->idUsuario = $_COOKIE['idUser'];
         $new->autor = $_COOKIE['user'];
-        $new->thumbail = $this->uploadThumbail($files, $postData['title']);
+        $new->thumbail = $this->uploadThumbail($files, $postData['title'], $_COOKIE['user']);
 
         $new->save();                           // Guardar noticia
         $id = aNew::select("idNoticia")->where('idUsuario', $new->idUsuario)->latest()->first();
@@ -55,11 +55,11 @@ class NewsController extends BaseController{
 
     }
 
-    public function uploadThumbail($files, $name){
+    public function uploadThumbail($files, $name, $usr){
         // Comprobar si existe una imagen y subirla o retornar null
         $thumb = $files['thumbail'];
         if($thumb){
-            $filePath = "img/uploads/news/".str_replace(' ', '',$name).".png";
+            $filePath = "img/uploads/news/".preg_replace('/[0-9\@\.\;\" "\?\¿\"\"\%\:\=\(\{]+/', '', $name).$usr.".png";
             $thumb->moveTo($filePath);
             return $filePath;
         }

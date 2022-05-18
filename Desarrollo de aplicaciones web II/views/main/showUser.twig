@@ -99,8 +99,8 @@
                                 </div>
                                 <div class="col-md-7">
                                     <div class="card-block">
-                                        <h2 class="card-title"><a href="/new?id={{new.idNoticia}}">{{new.titulo}}</a></h2>
-                                        <h4 class="card-text">{{new.resumen}}</h4>
+                                        <h2 class="card-title"><a href="/new?id={{new.idNoticia}}">{{new.titulo |u.truncate(52 , ' ...')}}</a></h2>
+                                        <h4 class="card-text">{{new.resumen |u.truncate(150, ' ...')}}</h4>
                                         <div class="metafooter">
                                             <div class="wrapfooter">
 								<span class="meta-footer-thumb">

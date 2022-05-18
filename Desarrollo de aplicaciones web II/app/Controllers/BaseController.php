@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use Laminas\Diactoros\Response\RedirectResponse;
+use Twig\Extra\String\StringExtension;
 use \Twig_Loader_Filesystem;
 use Laminas\Diactoros\Response\HtmlResponse;
 class BaseController {
@@ -15,6 +15,7 @@ class BaseController {
             'cache' => false,
         ));
         $this->templateEngine->addExtension(new \Twig\Extension\DebugExtension());     // dumb funciton to debug twig
+        $this->templateEngine->addExtension(new StringExtension());                    // |u.truncate agregar
     }
 
     public function renderHTML($fileName, $data = []) {     // Funcion para renderizar una pagina html, con twig template
